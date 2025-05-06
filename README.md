@@ -49,7 +49,7 @@ cd comfyui-php</code></pre>
 
   <h3>7. Start the Laravel Development Server</h3>
   <pre><code>php artisan serve</code></pre>
-  <p>Visit: <code>http://localhost:8000</code> or set up your web server to point to <code>/public</code>.</p>
+  <p>or set up your web server to point to <code>/public</code> and visit: <code>http://localhost:chosen port</code>  </p>
 
   <hr />
 
@@ -96,7 +96,6 @@ cd comfyui-php</code></pre>
 
   <h2>📂 Notes</h2>
   <ul>
-    <li>The <code>.env</code> file is included but stripped of secrets.</li>
     <li><code>vendor/</code> and <code>node_modules/</code> directories are excluded. Use <code>composer install</code> and <code>npm install</code> after cloning.</li>
   </ul>
 
