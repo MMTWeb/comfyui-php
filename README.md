@@ -82,7 +82,7 @@ cd comfyui-php</code></pre>
 
   <p>While PHP could technically send a request and poll the <code>/history</code> endpoint with a timeout, this approach is inefficient and not well-suited for PHP’s synchronous nature. It may lead to unstable behavior or timeouts.</p>
 
-  <p>Instead, the WebSocket server listens for ComfyUI's generation completion event and notifies Laravel in real time. This asynchronous communication model is much more robust and scalable.</p>
+  <p>Instead, the WebSocket server listens for ComfyUI's generation completion event and notifies Laravel in real time. This asynchronous communication model is much more robust in my opinion.</p>
 
   <blockquote>
     If anyone has a better or more elegant solution, feel free to share it — contributions and ideas are welcome!
