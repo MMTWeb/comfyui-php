@@ -35,7 +35,7 @@ cd comfyui-php</code></pre>
   <pre><code>php artisan migrate</code></pre>
 
   <h3>7. Start the Laravel App</h3>
-  <pre><code>php artisan serve</code></pre>
+  <pre><code>php artisan serve</code>, (e.g., <code>http://localhost/public</code>) or (e.g., <code>http://localhost:3000</code>) </pre>
 
   <hr>
 
