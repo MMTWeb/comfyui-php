@@ -105,4 +105,4 @@ cd comfyui-php</code></pre>
   <hr>
 
   <h2>📝 License</h2>
-  <p>This project is open-source and available under the <a href="LICENSE">MIT license</a>.</p>
+  <p>This project is open-source</p>
