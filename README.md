@@ -92,8 +92,7 @@ cd comfyui-php</code></pre>
 
   <h2>📂 Notes</h2>
   <ul>
-    <li><code>vendor/</code> and <code>node_modules/</code> are not included — run <code>composer install</code> and <code>npm install</code> after cloning.</li>
-    <li><code>.env</code> is included without sensitive data — configure it manually.</li>
+    <li><code>.env</code> <code>vendor/</code> and <code>node_modules/</code> are not included — run <code>composer install</code> and <code>npm install</code> after cloning.</li>
     <li>The Laravel app uses a Python WebSocket bridge to trigger ComfyUI workflows.</li>
   </ul>
 
