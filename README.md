@@ -27,6 +27,13 @@ cd comfyui-php</code></pre>
 
   <h3>3. Install NPM Dependencies</h3>
   <pre><code>npm install</code></pre>
+
+  <h3>4. Configure Environment</h3>
+  <pre><code>cp .env.example .env</code></pre>
+  <pre>Add <code>ComfyUIWebSocket=yourwebsocketaddress:yourwebsocketport</code></pre>
+  <pre>Comment <code># APP_MAINTENANCE_STORE=databaset</code></pre>
+  <pre>Set <code>APP_MAINTENANCE_DRIVER=file</code></pre>
+  <pre>Set <code>DB_CONNECTION=null</code></pre>
   
   <h3>5. Generate App Key</h3>
   <pre><code>php artisan key:generate</code></pre>
