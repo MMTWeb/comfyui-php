@@ -10,8 +10,8 @@
     <li>Laravel 10.x</li>
     <li>Node.js & NPM</li>
     <li>Composer</li>
-    <li>Python 3.x (for WebSocket bridge)</li>
-    <li>ComfyUI installed and running</li>
+    <li>Python 3.x (for WebSocket bridge) (In this readme I use python_embeded of ComfyUI)</li>
+    <li>ComfyUI installed and running (In this readme I use ComfyUI Portable version)</li>
   </ul>
 
   <hr>
@@ -23,12 +23,15 @@
 cd comfyui-php</code></pre>
 
   <h3>2. Install Composer Dependencies</h3>
+  
   <pre><code>composer install</code></pre>
 
   <h3>3. Install NPM Dependencies</h3>
+  
   <pre><code>npm install</code></pre>
 
   <h3>4. Configure Environment and disable database usage</h3>
+  
   <pre><code>cp .env.example .env</code></pre>
   <pre>Add the following line : <code>ComfyUIWebSocket=yourwebsocketaddress:yourwebsocketport</code></pre>
   <pre>Comment : <code># APP_MAINTENANCE_STORE=databaset</code></pre>
@@ -36,24 +39,54 @@ cd comfyui-php</code></pre>
   <pre>Set <code>DB_CONNECTION= to DB_CONNECTION=null</code></pre>
   
   <h3>5. Generate App Key</h3>
+  
   <pre><code>php artisan key:generate</code></pre>
 
   <h3>6. Run Laravel Migrations (if any)</h3>
+  
   <pre><code>php artisan migrate</code></pre>
 
   <h3>7. Start the Laravel App</h3>
+  
   <pre><code>php artisan serve</code>, (e.g., <code>http://localhost/public</code>) or (e.g., <code>http://localhost:3000</code>) </pre>
 
   <hr>
 
-  <h2>🔌 WebSocket Bridge (Python)</h2>
-  <p>Make sure your WebSocket server is running to connect Laravel with ComfyUI. You can find it in:</p>
-  <pre><code>/path-to-your-project/ws-server.py</code></pre>
+    <h2>🪟 Python WebSocket Setup on Windows with ComfyUI Portable Version</h2>
 
-  <p>Start it with:</p>
-  <pre><code>python3 ws-server.py</code></pre>
+    <p>If you're using the <strong>portable version of ComfyUI</strong> on Windows, it comes with an embedded Python interpreter. You can use this to run the WebSocket bridge without installing Python globally.</p>
 
-  <p>Make sure the URL matches what's defined in your <code>.env</code> file (e.g., <code>WS_SERVER_URL=ws://localhost:8765</code>).</p>
+  <h3>1. Install Required Packages</h3>
+  <p>Run these commands from the <code>ComfyUI\python_embeded</code> directory:</p>
+  <pre><code>.\python.exe -m pip install websocket-client flask</code></pre>
+
+  <p>Optionally, verify installation:</p>
+  <pre><code>.\python.exe -m pip show websocket-client</code></pre>
+
+  <h3>2. Move the WebSocket Directory</h3>
+  <p>Move the <code>websocket</code> folder (containing <code>websocket.py</code>) to the parent directory of ComfyUI, for example:</p>
+  <pre><code>D:\ComfyUI\websocket</code></pre>
+
+  <h3>3. Run the WebSocket Server</h3>
+  <p>From the ComfyUI folder, run the bridge with:</p>
+  <pre><code>cd D:\ComfyUI
+.\python_embeded\python.exe websocket\websocket.py</code></pre>
+
+  <p>This starts the WebSocket server which Laravel will communicate with.</p>
+
+  <hr>
+
+  <h2>💡 Why Use a Python WebSocket?</h2>
+
+  <p>The main reason I use a Python WebSocket bridge instead of connecting Laravel directly to the ComfyUI API is because it’s not feasible to reliably know when ComfyUI has finished generating an image.</p>
+
+  <p>While PHP could technically send a request and poll the <code>/history</code> endpoint with a timeout, this approach is inefficient and not well-suited for PHP’s synchronous nature. It may lead to unstable behavior or timeouts.</p>
+
+  <p>Instead, the WebSocket server listens for ComfyUI's generation completion event and notifies Laravel in real time. This asynchronous communication model is much more robust and scalable.</p>
+
+  <blockquote>
+    If anyone has a better or more elegant solution, feel free to share it — contributions and ideas are welcome!
+  </blockquote>
 
   <hr>
 
