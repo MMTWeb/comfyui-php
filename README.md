@@ -27,14 +27,7 @@ cd comfyui-php</code></pre>
 
   <h3>3. Install NPM Dependencies</h3>
   <pre><code>npm install</code></pre>
-
-  <h3>4. Configure Environment</h3>
-  <pre><code>cp .env.example .env</code></pre>
-  <p>Update your <code>.env</code> file with your local setup (e.g., database, websocket URL).</p>
-  <blockquote>
-    <strong>Important:</strong> Do <strong>not</strong> share your <code>.env</code> file or secrets publicly. The <code>base64key</code> has been intentionally removed.
-  </blockquote>
-
+  
   <h3>5. Generate App Key</h3>
   <pre><code>php artisan key:generate</code></pre>
 
